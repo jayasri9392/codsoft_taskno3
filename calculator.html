@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            height: 100vh;
+        }
+        table {
+            border: 0.5px solid black;
+            border-collapse: collapse;
+            margin: auto;
+            background-color: black;
+
+        }
+        td {
+            border: 1px solid black;
+            padding: 15px;
+            text-align: center;
+        }
+        button {
+            padding: 20px;
+            font-size: 1em;
+            border: none;
+            background: white;
+            border-radius: 10px;
+        }
+        #display {
+            width: 100%;
+      height: 40px;
+      margin-bottom: 10px;
+      text-align: right;
+      font-size: 1.5em;
+      font-style: normal;
+      padding: 5px;
+        }
+        .clear {
+            grid-column: span 6;
+      background: #ff4d4d;
+      color: white;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+    <td colspan="4">
+        <input type="text" id="display" disabled>
+    </td></tr>
+    <tr>
+       <td> <button onclick="press('7')">7</button></td>
+        <td><button onclick="press('8')">8</button></td>
+        <td><button onclick="press('9')">9</button></td>
+        <td><button onclick="press('-')">-</button></td></tr>
+        <br></br>
+        <tr>
+        <td><button onclick="press('4')">4</button></td>
+        <td><button onclick="press('5')">5</button></td>
+        <td><button onclick="press('6')">6</button></td>
+        <td><button onclick="press('*')">*</button></td></tr>
+        <br></br>
+        <tr>
+        <td><button onclick="press('1')">1</button></td>
+        <td><button onclick="press('2')">2</button></td>
+        <td><button onclick="press('3')">3</button></td>
+        <td><button onclick="press('/')">/</button></td></tr>
+        <br></br>
+        <tr>
+        <td><button onclick="press('0')">0</button></td>
+        <td><button onclick="press('.')">.</button></td>
+        <td><button onclick="calculate()">=</button></td>
+        <td><button onclick="press('+')">+</button></td></tr>
+        <br></br>
+        <tr>
+        <td colspan="4"><button onclick="clearDisplay()" class="clear">clear</button></td>
+    </tr></table>
+    <script>
+    function press(val) {
+        document.getElementById('display').value += val;
+    }
+    function clearDisplay() {
+        document.getElementById('display').value='';
+    }
+    function calculate() {
+        const display = document.getElementById('display');
+        try{
+            display.value = eval(display.value);
+        } catch (e) {
+            display.value = 'error';
+        }
+    }
+  </script>
+
+</body>
+</html>
